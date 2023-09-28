@@ -8,6 +8,17 @@ not seeing any significant difference in the mean response time of the api using
 
 sometimes the fastest even the slowest, or all 5 configs roughly the same for a ~10 word input around 2-2.1 seconds
 
+for example in [./report1.json](./report1.json) the 0 optimization is at `2337ms` for 2 calls mean and the 4
+optimization is at `2955ms` mean for 2 calls
+
+in [./report2.json](./report2.json) there is barely a dif between the 5, more optimization even tends to take longer:
+
+- opt=0 mean=2196ms
+- opt=1 mean=2031ms
+- opt=2 mean=2022ms
+- opt=3 mean=2117ms
+- opt=4 mean=2212ms
+
 was only doing a set of 2 calls per config - so not sure how this will look at for example 100 or 1000 calls per config - don't wanted to waste paid tokens just for this =D
 
 ## reproduce

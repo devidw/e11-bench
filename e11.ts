@@ -1,6 +1,12 @@
 import * as e11 from "npm:e11"
 import * as tinybench from "npm:tinybench@2.5.1"
 
+// const model = "eleven_monolingual_v1"
+const model = "eleven_multilingual_v2"
+const length = 6
+// const length = 12
+// const length = 24
+
 const apiConfig = new e11.Configuration({
     apiKey: Deno.env.get("ELEVEN_LABS_API_KEY"),
 })
@@ -13,8 +19,8 @@ async function tryOpt(a: number) {
             voiceId: "21m00Tcm4TlvDq8ikWAM",
             optimizeStreamingLatency: a,
             bodyTextToSpeechV1TextToSpeechVoiceIdPost: {
-                text: "helllo babeee this is just a test sentece for you to test you",
-                model_id: "eleven_multilingual_v2",
+                text: "hello ".repeat(length),
+                model_id: model,
             },
         },
         {
@@ -50,4 +56,4 @@ console.log(bench.table())
 
 console.log(bench.results)
 
-Deno.writeTextFileSync("./report.json", JSON.stringify(bench.results))
+Deno.writeTextFileSync(`./report_len-${length}_${model}.json`, JSON.stringify(bench.results))
